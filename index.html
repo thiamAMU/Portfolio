@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Astou THIAM — Data Analyst Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #ffffff;
+      color: #1e1e2e;
+      overflow-x: hidden;
+    }
+    :root {
+      --primary: #7c3aed;
+      --primary-light: #ede9fe;
+      --secondary: #0891b2;
+      --secondary-light: #e0f2fe;
+      --accent: #f59e0b;
+      --accent-light: #fef3c7;
+      --text: #1e1e2e;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --card: #f9fafb;
+      --white: #ffffff;
+    }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+      box-shadow: 0 1px 20px rgba(0,0,0,0.06);
+    }
+    .nav-logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color 0.3s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0; right: 0;
+      height: 2px;
+      background: var(--primary);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+    .nav-links a:hover { color: var(--primary); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 7rem 2rem 5rem;
+      background: linear-gradient(160deg, #faf5ff 0%, #e0f2fe 50%, #fef3c7 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 70%);
+      top: 20%; left: 10%;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(8,145,178,0.08) 0%, transparent 70%);
+      bottom: 10%; right: 10%;
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-avatar {
+      width: 130px; height: 130px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3.5rem;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 10px 40px rgba(124,58,237,0.25);
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .hero-tag {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 0.4rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: var(--secondary);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .hero-desc {
+      max-width: 650px;
+      margin: 0 auto 2rem;
+      color: var(--muted);
+      font-size: 0.97rem;
+      line-height: 1.9;
+    }
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+    }
+    .badge {
+      background: white;
+      border: 1.5px solid var(--border);
+      color: var(--text);
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      transition: all 0.3s;
+    }
+    .badge:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ===== BOUTONS ===== */
+    .btn {
+      padding: 0.85rem 2rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: 'Poppins', sans-serif;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #5b21b6);
+      color: white;
+      box-shadow: 0 4px 20px rgba(124,58,237,0.3);
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(124,58,237,0.4); }
+    .btn-outline {
+      background: white;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+    .btn-outline:hover { background: var(--primary); color: white; transform: translateY(-3px); }
+
+    /* ===== BOUTON GOOGLE DRIVE ===== */
+    .btn-drive {
+      background: white;
+      border: 2px solid #34a853;
+      color: #34a853;
+      padding: 0.55rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s;
+      font-family: 'Poppins', sans-serif;
+    }
+    .btn-drive:hover { background: #34a853; color: white; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(52,168,83,0.3); }
+    .btn-drive-blue { border-color: #4285f4; color: #4285f4; }
+    .btn-drive-blue:hover { background: #4285f4; color: white; box-shadow: 0 6px 20px rgba(66,133,244,0.3); }
+
+    /* ===== CV SECTION ===== */
+    .cv-section {
+      background: linear-gradient(135deg, #faf5ff, #e0f2fe);
+      border-radius: 24px;
+      padding: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+      border: 1.5px solid rgba(124,58,237,0.15);
+      box-shadow: 0 4px 20px rgba(124,58,237,0.06);
+    }
+    .cv-info { display: flex; align-items: center; gap: 1.2rem; }
+    .cv-icon {
+      width: 65px; height: 65px;
+      background: white;
+      border-radius: 18px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+    .cv-text h3 { font-size: 1.1rem; font-weight: 700; color: var(--text); }
+    .cv-text p { font-size: 0.83rem; color: var(--muted); margin-top: 0.3rem; }
+    .cv-btns { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+
+    /* ===== SECTIONS ===== */
+    section { padding: 5rem 2rem; }
+    .container { max-width: 1150px; margin: 0 auto; }
+    .section-title { text-align: center; margin-bottom: 3rem; }
+    .section-title h2 { font-size: 2rem; font-weight: 800; color: var(--text); margin-bottom: 0.5rem; }
+    .section-title h2 span {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .section-title p { color: var(--muted); font-size: 0.93rem; }
+    .divider {
+      width: 50px; height: 4px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 2px;
+      margin: 0.8rem auto;
+    }
+
+    /* ===== EXPLICATION DATA ===== */
+    .data-explain {
+      background: linear-gradient(135deg, #faf5ff, #e0f2fe);
+      border-radius: 20px;
+      padding: 2rem;
+      margin-bottom: 3rem;
+      border: 1.5px solid rgba(124,58,237,0.1);
+      text-align: center;
+    }
+    .data-explain h3 { font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 0.8rem; }
+    .data-explain p { color: var(--muted); font-size: 0.88rem; line-height: 1.8; max-width: 750px; margin: 0 auto; }
+    .data-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      justify-content: center;
+      margin-top: 1.2rem;
+    }
+    .data-pill {
+      background: white;
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      padding: 0.6rem 1rem;
+      font-size: 0.78rem;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .data-pill span { font-weight: 700; color: var(--primary); }
+
+    /* ===== À PROPOS ===== */
+    #about { background: var(--card); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .about-text h3 { font-size: 1.4rem; font-weight: 700; color: var(--primary); margin-bottom: 1rem; }
+    .about-text p { color: var(--muted); line-height: 1.9; margin-bottom: 1rem; font-size: 0.92rem; }
+    .about-info { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1.5rem; }
+    .info-item { display: flex; align-items: center; gap: 0.8rem; color: var(--muted); font-size: 0.88rem; }
+    .info-item i { color: var(--primary); width: 18px; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .stat-card {
+      background: white;
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    }
+    .stat-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 10px 30px rgba(124,58,237,0.1); }
+    .stat-card .number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .stat-card p { color: var(--muted); font-size: 0.78rem; margin-top: 0.3rem; }
+
+    /* ===== COMPÉTENCES ===== */
+    #skills { background: white; }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .skill-category {
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      padding: 1.8rem;
+      transition: all 0.3s;
+    }
+    .skill-category:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 10px 30px rgba(124,58,237,0.08); }
+    .skill-category h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 1.2rem; color: var(--text); display: flex; align-items: center; gap: 0.6rem; }
+    .skill-category h3 i { color: var(--primary); }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .skill-tag { background: var(--primary-light); color: var(--primary); padding: 0.3rem 0.8rem; border-radius: 8px; font-size: 0.75rem; font-weight: 600; transition: all 0.2s; }
+    .skill-tag:hover { background: var(--primary); color: white; }
+    .skill-tag.cyan { background: var(--secondary-light); color: var(--secondary); }
+    .skill-tag.cyan:hover { background: var(--secondary); color: white; }
+    .skill-tag.amber { background: var(--accent-light); color: #92400e; }
+
+    /* ===== PROJETS ===== */
+    #projects { background: var(--card); }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.8rem; }
+    .project-card {
+      background: white;
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.3s;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card:hover { transform: translateY(-8px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(124,58,237,0.1); }
+    .project-top-bar { height: 5px; background: linear-gradient(135deg, var(--primary), var(--secondary)); }
+    .project-top-bar.green { background: linear-gradient(135deg, #34a853, #0891b2); }
+    .project-top-bar.amber { background: linear-gradient(135deg, var(--accent), #ef4444); }
+    .project-top-bar.pink { background: linear-gradient(135deg, #ec4899, #8b5cf6); }
+    .project-top-bar.teal { background: linear-gradient(135deg, #14b8a6, #3b82f6); }
+    .project-header { padding: 1.5rem 1.5rem 0; display: flex; align-items: flex-start; gap: 1rem; }
+    .project-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
+    .project-num { font-size: 0.72rem; font-weight: 700; color: var(--muted); background: var(--card); border: 1px solid var(--border); padding: 0.2rem 0.6rem; border-radius: 50px; margin-top: 0.3rem; }
+    .project-body { padding: 1rem 1.5rem 1.5rem; flex: 1; display: flex; flex-direction: column; }
+    .project-body h3 { font-size: 0.97rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; line-height: 1.4; }
+    .project-explain {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 0.6rem 0.8rem;
+      margin-bottom: 0.8rem;
+      font-size: 0.78rem;
+      color: #78350f;
+      font-style: italic;
+      line-height: 1.5;
+    }
+    .project-body p { color: var(--muted); font-size: 0.82rem; line-height: 1.7; margin-bottom: 1rem; flex: 1; }
+    .project-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.2rem; }
+    .tech-tag { background: var(--secondary-light); color: var(--secondary); padding: 0.25rem 0.65rem; border-radius: 6px; font-size: 0.72rem; font-weight: 600; }
+    .project-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; padding-top: 1rem; border-top: 1px solid var(--border); margin-top: auto; }
+
+    /* ===== EXPÉRIENCES ===== */
+    #experience { background: white; }
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--primary), var(--secondary)); border-radius: 2px; }
+    .timeline-item { position: relative; margin-bottom: 2.5rem; padding-left: 1.5rem; }
+    .timeline-item::before { content: ''; position: absolute; left: -2.4rem; top: 0.5rem; width: 14px; height: 14px; border-radius: 50%; background: var(--primary); border: 3px solid white; box-shadow: 0 0 0 3px rgba(124,58,237,0.2); }
+    .timeline-date { font-size: 0.75rem; color: var(--secondary); font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px; }
+    .timeline-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 16px; padding: 1.5rem; transition: all 0.3s; }
+    .timeline-card:hover { border-color: var(--primary); box-shadow: 0 8px 25px rgba(124,58,237,0.08); }
+    .timeline-card h3 { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 0.3rem; }
+    .timeline-card .company { color: var(--primary); font-size: 0.85rem; font-weight: 600; margin-bottom: 0.8rem; }
+    .timeline-card ul { padding-left: 1.2rem; }
+    .timeline-card ul li { color: var(--muted); font-size: 0.83rem; line-height: 1.7; margin-bottom: 0.3rem; }
+
+    /* ===== CONTACT ===== */
+    #contact { background: var(--card); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .contact-info h3 { font-size: 1.4rem; font-weight: 700; color: var(--text); margin-bottom: 1rem; }
+    .contact-info p { color: var(--muted); line-height: 1.8; margin-bottom: 1.5rem; font-size: 0.92rem; }
+    .contact-items { display: flex; flex-direction: column; gap: 0.8rem; }
+    .contact-item { display: flex; align-items: center; gap: 1rem; background: white; border: 1.5px solid var(--border); border-radius: 12px; padding: 0.9rem 1.2rem; transition: all 0.3s; }
+    .contact-item:hover { border-color: var(--primary); box-shadow: 0 4px 15px rgba(124,58,237,0.08); }
+    .contact-item i { color: var(--primary); font-size: 1rem; width: 18px; }
+    .contact-item span { color: var(--text); font-size: 0.88rem; }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label { font-size: 0.82rem; color: var(--muted); font-weight: 600; }
+    .form-group input, .form-group textarea { background: white; border: 1.5px solid var(--border); border-radius: 10px; padding: 0.8rem 1rem; color: var(--text); font-family: 'Poppins', sans-serif; font-size: 0.88rem; transition: border-color 0.3s; outline: none; }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(124,58,237,0.08); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    /* ===== FOOTER ===== */
+    footer { background: #1e1e2e; text-align: center; padding: 2.5rem; color: #9ca3af; font-size: 0.83rem; }
+    footer span { background: linear-gradient(135deg, #a78bfa, #67e8f9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .cv-section { flex-direction: column; text-align: center; }
+      .cv-info { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav>
+  <div class="nav-logo">Astou THIAM</div>
+  <ul class="nav-links">
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#skills">Compétences</a></li>
+    <li><a href="#projects">Projets</a></li>
+    <li><a href="#experience">Parcours</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-avatar">👩🏾‍💻</div>
+    <span class="hero-tag">✨ Disponible à partir de septembre 2026</span>
+    <h1>Astou <span>THIAM</span></h1>
+    <p class="hero-subtitle">Data Analyst · Orange France · Grenoble</p>
+    <p class="hero-desc">
+      Je suis spécialisée dans l'<strong>analyse de données</strong> — concrètement,
+      j'aide les metiers à mieux comprendre leurs informations pour prendre
+      de meilleures décisions. Je transforme des chiffres complexes en
+      <strong>graphiques clairs</strong>, en <strong>tableaux de bord visuels</strong>
+      et en <strong>processus automatisés</strong> qui font gagner du temps.
+    </p>
+    <div class="hero-badges">
+      <span class="badge">🐍 Python</span>
+      <span class="badge">📊 Power BI</span>
+      <span class="badge">☁️ BigQuery</span>
+      <span class="badge">🤖 UiPath</span>
+      <span class="badge">🗄️ SQL</span>
+      <span class="badge">❄️ Snowflake</span>
+      <span class="badge">🔧 DBT</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-primary"><i class="fas fa-rocket"></i> Voir mes projets</a>
+      <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i> Me contacter</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== À PROPOS ===== -->
+<section id="about">
+  <div class="container">
+    <div class="section-title">
+      <h2>À <span>propos</span></h2>
+      <div class="divider"></div>
+      <p>Qui suis-je ?</p>
+    </div>
+
+    <!-- BLOC CV -->
+    <div class="cv-section">
+      <div class="cv-info">
+        <div class="cv-icon">📄</div>
+        <div class="cv-text">
+          <h3>Mon CV — Astou THIAM</h3>
+          <p>Data Analyst · Alternance Orange France · Disponible septembre 2026</p>
+        </div>
+      </div>
+      <div class="cv-btns">
+        <a href="https://drive.google.com/file/d/1Zdt84GgeTt6mOvXwQczhNTqB5QKasjIA/view?usp=sharing"
+           target="_blank" class="btn-drive">
+          <i class="fab fa-google-drive"></i> Voir mon CV
+        </a>
+        <a href="https://drive.google.com/uc?export=download&id=1Zdt84GgeTt6mOvXwQczhNTqB5QKasjIA"
+           target="_blank" class="btn-drive btn-drive-blue">
+          <i class="fas fa-download"></i> Télécharger
+        </a>
+      </div>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <h3>Data Analyst en alternance chez Orange 🍊</h3>
+        <p>
+          Je suis <strong>Astou THIAM</strong>, Data Analyst passionnée, actuellement en alternance
+          chez <strong>Orange France à Grenoble</strong> jusqu'en septembre 2026.
+        </p>
+        <p>
+          En termes simples : <strong>mon métier, c'est de donner du sens aux données.</strong>
+          Comme un détective qui analyse des indices, j'explore des milliers de données
+          pour en extraire les informations utiles et les présenter de façon claire
+          à ceux qui prennent des décisions.
+        </p>
+        <p>
+          Je suis à la recherche d'une opportunité à l'issue de ma formation pour
+          mettre mes compétences au service d'une équipe ambitieuse.
+        </p>
+        <div class="about-info">
+          <div class="info-item"><i class="fas fa-map-marker-alt"></i> Grenoble, France</div>
+          <div class="info-item"><i class="fas fa-envelope"></i> thiamastou053@gmail.com</div>
+          <div class="info-item"><i class="fas fa-phone"></i> 07 87 96 46 35</div>
+          <div class="info-item"><i class="fas fa-car"></i> Permis de conduire</div>
+          <div class="info-item"><i class="fas fa-language"></i> Français (natif) · Anglais (B1)</div>
+        </div>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="number">12</div>
+          <p>Projets réalisés en formation</p>
+        </div>
+        <div class="stat-card">
+          <div class="number">3+</div>
+          <p>Ans d'expérience en data</p>
+        </div>
+        <div class="stat-card">
+          <div class="number">10+</div>
+          <p>Technologies maîtrisées</p>
+        </div>
+        <div class="stat-card">
+          <div class="number">🏅</div>
+          <p>Certifiée UiPath RPA</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMPÉTENCES ===== -->
+<section id="skills">
+  <div class="container">
+    <div class="section-title">
+      <h2>Mes <span>compétences</span></h2>
+      <div class="divider"></div>
+      <p>Les outils que j'utilise pour analyser, visualiser et automatiser</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h3><i class="fas fa-chart-bar"></i> Analyse & Visualisation</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">SQL avancé</span>
+          <span class="skill-tag">Power BI</span>
+          <span class="skill-tag">DAX</span>
+          <span class="skill-tag">Power Query</span>
+          <span class="skill-tag">Excel</span>
+          <span class="skill-tag">KPI</span>
+          <span class="skill-tag">Data Viz</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3><i class="fas fa-code"></i> Programmation Python</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Pandas</span>
+          <span class="skill-tag">NumPy</span>
+          <span class="skill-tag">Matplotlib</span>
+          <span class="skill-tag">Seaborn</span>
+          <span class="skill-tag">Scikit-learn</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3><i class="fas fa-cloud"></i> Cloud & Bases de données</h3>
+        <div class="skill-tags">
+          <span class="skill-tag cyan">BigQuery (GCP)</span>
+          <span class="skill-tag cyan">DBT</span>
+          <span class="skill-tag cyan">Snowflake</span>
+          <span class="skill-tag cyan">MySQL</span>
+          <span class="skill-tag cyan">PostgreSQL</span>
+          <span class="skill-tag cyan">Oracle</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3><i class="fas fa-robot"></i> Automatisation</h3>
+        <div class="skill-tags">
+          <span class="skill-tag amber">UiPath ✅ Certifiée</span>
+          <span class="skill-tag amber">Power Automate</span>
+          <span class="skill-tag amber">Macros Excel</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3><i class="fas fa-tools"></i> Outils & Versionning</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">GitLab</span>
+          <span class="skill-tag">VS Code</span>
+          <span class="skill-tag">UiPath Studio</span>
+          <span class="skill-tag">Git</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3><i class="fas fa-laptop-code"></i> Développement (bases)</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">HTML</span>
+          <span class="skill-tag">CSS</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">PHP</span>
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">C</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROJETS ===== -->
+<section id="projects">
+  <div class="container">
+    <div class="section-title">
+      <h2>Mes <span>projets</span></h2>
+      <div class="divider"></div>
+      <p>12 projets réalisés en formation — cliquez sur le bouton pour accéder aux fichiers</p>
+    </div>
+
+    <!-- EXPLICATION SIMPLE -->
+    <div class="data-explain">
+      <h3>💡 C'est quoi concrètement ces projets ?</h3>
+      <p>
+        Chaque projet correspond à une mission réelle que j'ai réalisée, comme le ferait
+        un Data Analyst en entreprise. J'ai travaillé sur des données de ventes, de santé,
+        d'immobilier, d'eau potable... pour répondre à des questions concrètes grâce aux chiffres.
+      </p>
+      <div class="data-pills">
+        <div class="data-pill">📊 <span>Visualiser</span> des données en graphiques clairs</div>
+        <div class="data-pill">🔍 <span>Analyser</span> pour trouver des tendances cachées</div>
+        <div class="data-pill">🤖 <span>Automatiser</span> des tâches répétitives</div>
+        <div class="data-pill">💡 <span>Décider</span> grâce aux données</div>
+      </div>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- PROJET 1 -->
+      <div class="project-card">
+        <div class="project-top-bar"></div>
+        <div class="project-header">
+          <div class="project-icon" style="background:#ede9fe;">🎯</div>
+          <span class="project-num">Projet 1</span>
+        </div>
+        <div class="project-body">
+          <h3>Prenez en main votre formation de Data Analyst</h3>
+          <div class="project-explain">
+            🗣️ En clair : J'ai défini mon plan de formation, identifié mes objectifs
+            et appris à me repérer dans le monde de la data.
+          </div>
+          <p>Prise en main des outils, définition du parcours d'apprentissage
+          et découverte de l'environnement Data Analyst.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Organisation</span>
+            <span class="tech-tag">Veille</span>
+            <span class="tech-tag">Outils Data</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://drive.google.com/drive/folders/1sZ18g865TdLVgLC0N34o319FCICrseym?usp=sharing"
+               target="_blank" class="btn-drive">
+              <i class="fab fa-google-drive"></i> Voir le projet
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJET 2 -->
+      <div class="project-card">
+        <div class="project-top-bar green"></div>
+        <div class="project-header">
+          <div class="project-icon" style="background:#dcfce7;">🛒</div>
+          <span class="project-num">Projet 2</span>
+        </div>
+        <div class="project-body">
+          <h3>Faites une analyse de ventes pour un e-commerce</h3>
+          <div class="project-explain">
+            🗣️ En clair : Comme analyser les ventes d'une boutique en ligne pour
+            savoir quels produits marchent le mieux et quand.
+          </div>
+          <p>Analyse complète des données de ventes d'un site e-commerce :
+          tendances, produits phares, saisonnalité et recommandations.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Excel</span>
+            <span class="tech-tag">Analyse de ventes</span>
+            <span class="tech-tag">KPI</span>
+            <span class="tech-tag">Data Viz</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://drive.google.com/drive/folders/16MhhZqHdkGpyzY3LoKlXKBfIflTS3IHN?usp=sharing"
+               target="_blank" class="btn-drive">
+              <i class="fab fa-google-drive"></i> Voir le projet
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJET 3 -->
+      <div class="project-card">
+        <div class="project-top-bar amber"></div>
+        <div class="project-header">
+          <div class="project-icon" style="background:#fef3c7;">🗄️</div>
+          <span class="project-num">Projet 3</span>
+        </div>
+        <div class="project-body">
+          <h3>Requêtez une base de données avec SQL</h3>
+          <div class="project-explain">
+            🗣️ En clair : SQL c'est le langage pour "interroger" une base de données,
+            comme poser des questions précises à une immense bibliothèque de chiffres.
+          </div>
+          <p>Maîtrise du langage SQL pour extraire, filtrer et analyser
+          des données stockées dans des bases de données relationnelles.</p>
+          <div class="project-tech">
+            <span class="tech-tag">SQL</span>
+            <span class="tech-tag">Base de données</span>
+            <span class="tech-tag">Requêtes</span>
+            <span class="tech-tag">Jointures</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://drive.google.com/drive/folders/1NgivvMtXZkFI78JN3hc8ZWboeJD3YBiv?usp=sharing"
+               target="_blank" class="btn-drive">
+              <i class="fab fa-google-drive"></i> Voir le projet
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJET 4 -->
+      <div class="project-card">
+        <div class="project-top-bar pink"></div>
+        <div class="project-header">
+          <div class="project-icon" style="background:#fce7f3;">🏥</div>
+          <span class="project-num">Projet 4</span>
+        </div>
+        <div class="project-body">
+          <h3>Réalisez une étude de santé publique avec Python</h3>
+          <div class="project-explain">
+            🗣️ En clair : J'ai analysé des données de santé à l'échelle mondiale
+            pour comprendre des problèmes comme la malnutrition ou les maladies.
+          </div>
+          <p>Analyse de données de santé publique mondiale avec Python.
+          Identification de tendances, corrélations et visualisations impactantes.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Pandas</span>
+            <span class="tech-tag">Matplotlib</span>
+            <span class="tech-tag">Santé publique</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://drive.google.com/drive/folders/1X_ziOiHLmi0eV6rsDaVg-fyHYmGfk1GP?usp=sharing"
+               target="_blank" class="btn-drive">
+              <i class="fab fa-google-drive"></i> Voir le projet
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJET 5 -->
+      <div class="project-card">
+        <div class="project-top-bar teal"></div>
+        <div class="project-header">
+          <div class="project-icon" style="background:#ccfbf1;">🏠</div>
+          <span class="project-num">Projet 5</span>
+        </div>
+        <div class="project-body">
+          <h3>Créez et utilisez une base de données immobilière avec SQL</h3>
+          <div class="project-explain">
+            🗣️ En clair : J'ai construit une base de données pour analyser le marché et
+             aider les différentes agences régionales à mieux accompagner leurs clients.
+          </div>
+          <p>Création d'une base de données immobilière complète, modélisation
+          des données et requêtes SQL pour analyser les prix du marché.</p>
+          <div class="project-tech">
+            <span class="tech-tag">SQL</span>
+            <span class="tech-tag">Modélisation</span>
+            <span class="tech-tag">Immobilier</span>
+            <span class="tech-tag">MySQL</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://drive.google.com/drive/folders/1zPj1UFX6o0JyxvVVRS1qdFXywPcMZM4P?usp=sharing"
+               target="_blank" class="btn-drive">
+              <i class="fab fa-google-drive"></i> Voir le projet
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJET 6 -->
+      <div class="project-card">
+        <div class="project-top-bar"></div>
+        <div class="project-header">
+          <div class="project-icon" style="background:#ede9fe;">🛍️</div>
+          <span class="project-num">Projet 6</span>
+        </div>
+        <div class="project-body">
+          <h3>Optimisez la gestion des données d'une boutique avec Python</h3>
+          <div class="project-explain">
+            🗣️ En clair : Organiser la gestion des stocks, des données (jointures) 
+            et analyser les ventes d'un marchand de vin.
+          </div>
+          <p>Nettoyage, structuration et optimisation des données d'une boutique
+          avec Python.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Pandas</span>
+            <span class="tech-tag">Nettoyage données</span>
+            <span class="tech-tag">Automatisation</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://drive.google.com/drive/folders/1mcUOultJf29OYMWIeUwCSrHCv0woigfZ?usp=sharing"
+               target="_blank" class="btn-drive">
+              <i class="fab fa-google-drive"></i> Voir le projet
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJET 7 -->
+      <div class="project-card">
+        <div class="project-top-bar green"></div>
+        <div class="project-header">
+          <div class="project-icon" style="background:#dcfce7;">📊</div>
+          <span class="project-num">Projet 7</span>
+        </div>
+        <div class="project-body">
+          <h3>Créez un tableau de bord dynamique avec Power BI</h3>
+          <div class="project-explain">
+            🗣️ En clair : Power BI c'est comme Excel mais en beaucoup plus visuel.
+            J'ai créé un tableau de bord interactif qu'on peut filtrer en un clic.
+          </div>
+          <p>Conception d'un tableau de bord interactif et dynamique avec Power BI.
+          Visualisations avancées, DAX et publication dans le cloud.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Power BI</span>
+            <span class="tech-tag">DAX</span>
+            <span class="tech-tag">Power Query</span>
+            <span class="tech-tag">Dashboard</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://drive.google.com/drive/folders/1d374qGIZhI8SNxFgyFQe8oxWmRdHUniK?usp=sharing"
+               target="_blank" class="btn-drive">
+              <i class="fab fa-google-drive"></i> Voir le projet
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJET 8 -->
+      <div class="project-card">
+        <div class="project-top-bar amber"></div>
+        <div class="project-header">
+          <div class="project-icon" style="background:#fef3c7;">👥</div>
+          <span class="project-num">Projet 8</span>
+        </div>
+        <div class="project-body">
+          <h3>Analysez l'évolution de profils sociodémographiques avec DBT</h3>
+          <div class="project-explain">
+            🗣️ En clair : J'ai étudié comment les profils de personnes (âge, sexe,
+            localisation) évoluent dans le temps, comme un recensement intelligent.
+          </div>
+          <p>Analyse de l'évolution de profils sociodémographiques avec DBT
+          (Data Build Tool) sur Snowflake. Transformation et modélisation des données.</p>
+          <div class="project-tech">
+            <span class="tech-tag">DBT</span>
+            <span class="tech-tag">Snowflake</span>
+            <span class="tech-tag">SQL</span>
+            <span class="tech-tag">Sociodémographie</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://drive.google.com/drive/folders/1ytuaxF0CQhunVOihJ7fVU6bd7IGJ8M1t?usp=sharing"
+               target="_blank" class="btn-drive">
+              <i class="fab fa-google-drive"></i> Voir le projet
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJET 9 -->
+      <div class="project-card">
+        <div class="project-top-bar pink"></div>
+        <div class="project-header">
+          <div class="project-icon" style="background:#fce7f3;">📚</div>
+          <span class="project-num">Projet 9</span>
+        </div>
+        <div class="project-body">
+          <h3>Analysez les ventes d'une librairie avec Python</h3>
+          <div class="project-explain">
+            🗣️ En clair : J'ai analysé les données de ventes d'une librairie
+            pour identifier les livres les plus vendus et les périodes creuses.
+          </div>
+          <p>Analyse statistique complète des ventes d'une librairie avec Python.
+          Tests statistiques, corrélations et recommandations stratégiques.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Pandas</span>
+            <span class="tech-tag">Seaborn</span>
+            <span class="tech-tag">Stats</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://drive.google.com/drive/folders/1v3wHfiUfczDSfbcWTIu2jf4wP353Spv2?usp=sharing"
+               target="_blank" class="btn-drive">
+              <i class="fab fa-google-drive"></i> Voir le projet
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJET 10 -->
+      <div class="project-card">
+        <div class="project-top-bar teal"></div>
+        <div class="project-header">
+          <div class="project-icon" style="background:#ccfbf1;">💧</div>
+          <span class="project-num">Projet 10</span>
+        </div>
+        <div class="project-body">
+          <h3>Faites une étude sur l'eau potable</h3>
+          <div class="project-explain">
+            🗣️ En clair : J'ai analysé l'accès à l'eau potable dans le monde
+            pour identifier les pays en difficulté et visualiser les inégalités.
+          </div>
+          <p>Étude mondiale sur l'accès à l'eau potable. Analyse des inégalités,
+          cartographie des zones à risque et visualisations impactantes.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Power BI</span>
+            <span class="tech-tag">Data Viz</span>
+            <span class="tech-tag">Cartographie</span>
+            <span class="tech-tag">ODD</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://drive.google.com/drive/folders/1NdlhVoTqKIfofJq-7F7z5rZsjnpp89_J?usp=sharing"
+               target="_blank" class="btn-drive">
+              <i class="fab fa-google-drive"></i> Voir le projet
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJET 11 -->
+      <div class="project-card">
+        <div class="project-top-bar"></div>
+        <div class="project-header">
+          <div class="project-icon" style="background:#ede9fe;">🌍</div>
+          <span class="project-num">Projet 11</span>
+        </div>
+        <div class="project-body">
+          <h3>Produisez une étude de marché avec Python</h3>
+          <div class="project-explain">
+            🗣️ En clair : Effectuer une étude de marché afin de déterminer les meilleurs pays 
+            pour y exporter du poulet.
+          </div>
+          <p>Étude de marché internationale avec Python. Clustering de pays,
+          analyse en composantes principales et recommandations d'expansion.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Scikit-learn</span>
+            <span class="tech-tag">Clustering</span>
+            <span class="tech-tag">ACP</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://drive.google.com/drive/folders/1-zVnAihvwbvhwy-Q4wmj06oko0t7qq5w?usp=sharing"
+               target="_blank" class="btn-drive">
+              <i class="fab fa-google-drive"></i> Voir le projet
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJET 12 -->
+      <div class="project-card">
+        <div class="project-top-bar green"></div>
+        <div class="project-header">
+          <div class="project-icon" style="background:#dcfce7;">🔍</div>
+          <span class="project-num">Projet 12</span>
+        </div>
+        <div class="project-body">
+          <h3>Détectez des faux billets avec Python</h3>
+          <div class="project-explain">
+            🗣️ En clair : Utiliser des algorithmes de classification supervisée ou non 
+            afin de prédire la véracité d'un billet à partir de ses dimensions.
+          </div>
+          <p>Développement d'un modèle de Machine Learning pour détecter
+          automatiquement les faux billets.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Machine Learning</span>
+            <span class="tech-tag">Scikit-learn</span>
+            <span class="tech-tag">K-Means</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://drive.google.com/drive/folders/1sPqVBrb3_leAI92nItJdhWbRlBJqXmWB?usp=sharing"
+               target="_blank" class="btn-drive">
+              <i class="fab fa-google-drive"></i> Voir le projet
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== EXPÉRIENCES ===== -->
+<section id="experience">
+  <div class="container">
+    <div class="section-title">
+      <h2>Mon <span>parcours</span></h2>
+      <div class="divider"></div>
+      <p>Mes expériences professionnelles et ma formation</p>
+    </div>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-date">Sept. 2024 — Sept. 2026</div>
+        <div class="timeline-card">
+          <h3>Apprentie Data Analyst</h3>
+          <div class="company">🍊 Orange France — Grenoble</div>
+          <ul>
+            <li>Requêtes BigQuery avancées et construction de tables (GCP)</li>
+            <li>Dashboards Power BI avec DAX et Power Query</li>
+            <li>Macros Excel pour le reporting quotidien</li>
+            <li>Automatisation avec Power Automate et robots UiPath</li>
+            <li>Versionning via GitLab</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">Sept. 2024 — En cours</div>
+        <div class="timeline-card">
+          <h3>Master 1 Data Analyst — RNCP 6</h3>
+          <div class="company">🎓 CFA Orange / OpenClassrooms — Grenoble</div>
+          <ul>
+            <li>12 projets concrets avec soutenance</li>
+            <li>Python, SQL, Power BI, Excel, DBT, Snowflake</li>
+            <li>Suivi et versionning via GitLab</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">Août 2022 — Janv. 2023</div>
+        <div class="timeline-card">
+          <h3>Stage — Data Analyst</h3>
+          <div class="company">💊 Direction de la Pharmacie et du Médicament — Dakar</div>
+          <ul>
+            <li>Étude des gisements de données existants</li>
+            <li>Requêtes SQL sur bases de données</li>
+            <li>Segmentation et score de pharmacovigilance</li>
+            <li>Aide à la décision pour autorisations commerciales</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">Mars 2021 — Août 2021</div>
+        <div class="timeline-card">
+          <h3>Stage — Informatique</h3>
+          <div class="company">📮 Groupe La Poste — Dakar</div>
+          <ul>
+            <li>Système de gestion d'équipements informatiques</li>
+            <li>Rapports mensuels automatisés</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2022 — 2023</div>
+        <div class="timeline-card">
+          <h3>Master 1 — Modélisation Statistique et Informatique</h3>
+          <div class="company">🎓 Université Cheikh Anta Diop — Dakar</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2019 — 2022</div>
+        <div class="timeline-card">
+          <h3>Licence 3 Informatique</h3>
+          <div class="company">🎓 École Supérieure Polytechnique — Dakar</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="container">
+    <div class="section-title">
+      <h2>Me <span>contacter</span></h2>
+      <div class="divider"></div>
+      <p>Disponible pour une opportunité à partir de septembre 2026</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Travaillons ensemble !</h3>
+        <p>Je suis à la recherche d'une opportunité à l'issue de ma formation.
+        N'hésitez pas à me contacter pour échanger sur vos besoins en data analyse.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>thiamastou053@gmail.com</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <span>07 87 96 46 35</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Grenoble, France</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-car"></i>
+            <span>Permis de conduire · Mobile</span>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <label>Votre nom</label>
+          <input type="text" placeholder="Jean Dupont" required/>
+        </div>
+        <div class="form-group">
+          <label>Votre email</label>
+          <input type="email" placeholder="jean@exemple.com" required/>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Bonjour Astou, je souhaite vous contacter pour..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
+          <i class="fas fa-paper-plane"></i> Envoyer le message
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <p>Conçu par <span>Astou THIAM</span> · Data Analyst · 2026</p>
+  <p style="margin-top:0.5rem; font-size:0.75rem;">
+    Grenoble, France · thiamastou053@gmail.com
+  </p>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    alert("Merci pour votre message ! Je vous répondrai très bientôt 😊");
+    e.target.reset();
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll(
+    '.project-card, .skill-category, .stat-card, .timeline-card, .data-pill'
+  ).forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
